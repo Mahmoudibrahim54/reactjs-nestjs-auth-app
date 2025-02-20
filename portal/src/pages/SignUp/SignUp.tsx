@@ -1,3 +1,4 @@
+import './SignUp.scss';
 import { FC } from 'react';
 
 export const SignUp: FC = () => {
