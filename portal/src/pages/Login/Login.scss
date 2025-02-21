@@ -1,10 +1,11 @@
 .login-page-wrapper {
-  height: 750px;
-  width: 800px;
+  height: 95%;
+  width: 38%;
   border-radius: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 80px;
   background-color: #e9e8e6;
 
@@ -13,6 +14,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 50px;
     .login-form-item-wrapper {
       width: 70%;
@@ -53,6 +55,7 @@
     .login-form-item {
       width: 70%;
       font-weight: 500;
+
       .login-form-submit-button {
         width: 70%;
         height: 80px;
@@ -75,5 +78,11 @@
         }
       }
     }
+  }
+  .ant-form-item .ant-form-item-control-input-content {
+    flex: auto;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }

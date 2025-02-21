@@ -1,0 +1,109 @@
+.sign-up-page-wrapper {
+  height: 100%;
+  width: 50%;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+  background-color: #e9e8e6;
+
+  .sign-up-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    .sign-up-form-inputs-wrapper {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      .sign-up-form-item-wrapper,
+      .sign-up-address-wrapper {
+        width: 40%;
+        font-weight: 500;
+        border: 1px solid #f0754d;
+        border-radius: 8px;
+        padding: 18px;
+        height: 55px;
+        .ant-input-outlined:focus,
+        .ant-input-affix-wrapper-focused {
+          box-shadow: unset;
+        }
+
+        .ant-form-item-row {
+          display: flex;
+          flex-direction: column;
+          align-items: start;
+          width: 100%;
+        }
+        .ant-form-item-control {
+          width: 100%;
+        }
+        label {
+          font-size: 1.4rem !important;
+        }
+        svg {
+          width: 28px;
+          height: 28px;
+        }
+        .sign-up-form-input {
+          height: 40px;
+          width: 100%;
+          border: none;
+          font-size: 1.4rem;
+          background-color: #e9e8e6;
+        }
+      }
+    }
+    .sign-up-form-item {
+      width: 70%;
+      font-weight: 500;
+
+      .sign-up-form-submit-button {
+        width: 70%;
+        height: 80px;
+        font-size: 2rem;
+        background-color: #f0754d;
+      }
+      label {
+        font-size: 1.4rem !important;
+      }
+      .sign-up-form-checkbox {
+        .ant-checkbox-inner {
+          border: 1px solid #f0754d;
+        }
+        .ant-checkbox-checked {
+          background-color: #f0754d;
+
+          .ant-checkbox-inner {
+            background-color: #f0754d;
+          }
+        }
+      }
+    }
+  }
+  .ant-form-item .ant-form-item-control-input-content {
+    flex: auto;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .ant-form-item-with-help .ant-form-item-explain {
+    height: auto;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+  }
+  .sign-up-address-wrapper {
+    width: 86% !important;
+    .sign-up-form-input {
+      width: 91% !important;
+    }
+  }
+}
