@@ -20,7 +20,8 @@
       font-weight: 500;
       cursor: pointer;
 
-      :hover {
+      :hover,
+      :active {
         color: #f0754d;
         border-bottom: solid;
         border-color: #f0754d;
@@ -35,7 +36,8 @@
       font-size: 1.3rem;
       font-weight: 500;
       cursor: pointer;
-      :hover {
+      :hover,
+      :active {
         color: #f0754d;
         border-bottom: solid;
         border-color: #f0754d;

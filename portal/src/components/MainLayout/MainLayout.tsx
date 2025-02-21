@@ -13,17 +13,48 @@ interface MyProps {
   children?: React.ReactNode;
 }
 import { Layout } from 'antd';
+import { NavLink } from 'react-router';
 
 export const MainLayout: FC<MyProps> = ({ children }) => {
   return (
     <Layout className="main-layout-wrapper">
       <Layout.Header className="main-layout-header">
-        <div className="home-menu-item">
-          <div>Home</div>
+        <div className={`home-menu-item`}>
+          <NavLink
+            style={({ isActive }) => ({
+              color: isActive ? '#f0754d' : 'black',
+              borderBottom: isActive ? 'solid' : 'unset',
+              borderColor: isActive ? '#f0754d' : 'unset',
+              borderWidth: isActive ? '5px' : 'unset',
+            })}
+            to="/home"
+          >
+            Home
+          </NavLink>
         </div>
         <div className="auth-menu-wrapper">
-          <div>Sign Up</div>
-          <div>Sign In</div>
+          <NavLink
+            style={({ isActive }) => ({
+              color: isActive ? '#f0754d' : 'black',
+              borderBottom: isActive ? 'solid' : 'unset',
+              borderColor: isActive ? '#f0754d' : 'unset',
+              borderWidth: isActive ? '5px' : 'unset',
+            })}
+            to="/sign-up"
+          >
+            Sign Up
+          </NavLink>
+          <NavLink
+            style={({ isActive }) => ({
+              color: isActive ? '#f0754d' : 'black',
+              borderBottom: isActive ? 'solid' : 'unset',
+              borderColor: isActive ? '#f0754d' : 'unset',
+              borderWidth: isActive ? '5px' : 'unset',
+            })}
+            to="/login"
+          >
+            Sign In
+          </NavLink>
         </div>
       </Layout.Header>
       <Layout.Content className="main-layout-content">
