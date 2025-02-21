@@ -1,5 +1,5 @@
 .login-page-wrapper {
-  height: 95%;
+  height: 80%;
   width: 38%;
   border-radius: 16px;
   display: flex;
@@ -9,7 +9,7 @@
   gap: 80px;
   background-color: #e9e8e6;
   padding: 20px 0;
-
+  box-sizing: unset;
   .login-form {
     width: 100%;
     display: flex;
@@ -23,7 +23,7 @@
       border: 1px solid #f0754d;
       border-radius: 8px;
       padding: 18px;
-      height: 80px;
+      height: 100px;
       .ant-input-outlined:focus,
       .ant-input-affix-wrapper-focused {
         box-shadow: unset;

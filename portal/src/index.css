@@ -26,11 +26,11 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  /* min-width: 320px;
+  min-height: 100vh; */
   background-color: #f0754d;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 @media (prefers-color-scheme: light) {
