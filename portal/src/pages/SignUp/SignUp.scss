@@ -1,6 +1,7 @@
 .sign-up-page-wrapper {
   height: 95%;
   width: 70%;
+  min-width: 600px;
   border-radius: 16px;
   display: flex;
   flex-direction: column;
@@ -8,6 +9,7 @@
   align-items: center;
   background-color: #e9e8e6;
   padding: 20px 010px 0;
+  overflow-y: scroll;
 
   .sign-up-form {
     width: 100%;
@@ -28,6 +30,7 @@
       .sign-up-form-item-wrapper,
       .sign-up-address-wrapper {
         width: 40%;
+        min-width: 400px;
         font-weight: 500;
         border: 1px solid #f0754d;
         border-radius: 8px;

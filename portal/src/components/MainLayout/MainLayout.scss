@@ -9,6 +9,7 @@
     align-items: center;
     width: 100%;
     background-color: #e9e8e6;
+    // flex-wrap: wrap;
 
     .home-menu-items {
       display: flex;
@@ -19,6 +20,7 @@
       font-size: 1.3rem;
       font-weight: 500;
       cursor: pointer;
+      flex-wrap: wrap;
 
       :hover,
       :active {
@@ -36,6 +38,8 @@
       font-size: 1.3rem;
       font-weight: 500;
       cursor: pointer;
+      flex-wrap: wrap;
+
       :hover,
       :active {
         color: #f0754d;

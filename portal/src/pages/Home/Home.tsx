@@ -5,7 +5,7 @@ import { NavLink } from 'react-router';
 export const Home: FC = () => {
   return (
     <div className="home-page-wrapper">
-      <h1 className="home-page-welcome">Welcome to my Home Page</h1>
+      <h1 className="home-page-welcome">Welcome to My Home Page</h1>
       <NavLink to="/login" className="home-page-button">
         Sign In
       </NavLink>
