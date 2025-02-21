@@ -1,0 +1,11 @@
+.user-home-page-wrapper {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: #e9e8e6;
+  .user-name {
+    padding-inline-start: 40px;
+  }
+}

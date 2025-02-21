@@ -1,0 +1,24 @@
+.home-page-wrapper {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: #e9e8e6;
+
+  .home-page-button {
+    width: 35%;
+    border-radius: 50px;
+    height: 70px;
+    background-color: #e9e8e6;
+    font-size: 2rem;
+    color: #f0754d;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .sign-up-button {
+    width: 45%;
+  }
+}
