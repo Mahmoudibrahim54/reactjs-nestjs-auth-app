@@ -40,10 +40,13 @@ import { UserController } from './users/controller/user.controller';
               const salt = await bcrypt.genSalt(10);
               const hashedPassword = await bcrypt.hash(user.password, salt);
               user.set('password', hashedPassword);
-              next();
             } catch (error) {
               next(error);
             }
+
+            if (!user.isModified('email')) return next();
+            user.set('email', user.email.toLocaleLowerCase());
+            next();
           });
 
           return schema;

@@ -6,7 +6,7 @@ import { UserService } from '../users/service/user.service';
 
 interface JwtPayload {
   sub: number;
-  username: string;
+  email: string;
 }
 
 @Injectable()
@@ -23,7 +23,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(payload: JwtPayload) {
-    const user = await this.userService.findByUsername(payload.username);
+    const user = await this.userService.findByEmail(payload.email);
     if (!user) {
       throw new UnauthorizedException();
     }

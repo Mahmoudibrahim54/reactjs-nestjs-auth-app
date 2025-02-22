@@ -21,6 +21,12 @@ export class UserController {
 
   @Post()
   async createUser(@Body() createUserDto: CreateUserDto) {
+    if (createUserDto.password !== createUserDto.confirmPassword) {
+      throw new HttpException(
+        'Passwords do not match!',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
     try {
       const newUser = await this.userService.createUser(createUserDto);
       return {
@@ -41,6 +47,12 @@ export class UserController {
     @Param('id') userId: string,
     @Body() updateUserDto: UpdateUserDto,
   ) {
+    if (updateUserDto.password !== updateUserDto.confirmPassword) {
+      throw new HttpException(
+        'Passwords do not match!',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
     try {
       const existingUser = await this.userService.updateUser(
         userId,
