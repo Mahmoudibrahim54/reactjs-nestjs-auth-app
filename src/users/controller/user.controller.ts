@@ -21,7 +21,7 @@ export class UserController {
 
   @Post()
   async createUser(@Body() createUserDto: CreateUserDto) {
-    if (createUserDto.password !== createUserDto.confirmPassword) {
+    if (createUserDto.password !== createUserDto.confirm_password) {
       throw new HttpException(
         'Passwords do not match!',
         HttpStatus.BAD_REQUEST,
@@ -47,7 +47,7 @@ export class UserController {
     @Param('id') userId: string,
     @Body() updateUserDto: UpdateUserDto,
   ) {
-    if (updateUserDto.password !== updateUserDto.confirmPassword) {
+    if (updateUserDto.password !== updateUserDto.confirm_password) {
       throw new HttpException(
         'Passwords do not match!',
         HttpStatus.BAD_REQUEST,

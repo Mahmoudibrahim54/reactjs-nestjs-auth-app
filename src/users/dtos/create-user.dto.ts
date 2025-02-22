@@ -4,7 +4,6 @@ import {
   IsNotEmpty,
   IsEmail,
   Matches,
-  Validate,
   MinLength,
 } from 'class-validator';
 export class CreateUserDto {
@@ -49,8 +48,5 @@ export class CreateUserDto {
   @IsString()
   @MaxLength(30)
   @IsNotEmpty()
-  @Validate(Matches, ['password'], {
-    message: 'Passwords do not match',
-  })
-  readonly confirmPassword: string;
+  readonly confirm_password: string;
 }
