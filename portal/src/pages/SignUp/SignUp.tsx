@@ -1,16 +1,38 @@
+import HttpClient from '../../api/index';
 import { Button, Checkbox, Form, Input } from 'antd';
 import './SignUp.scss';
 import { FC } from 'react';
 import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
+import { useNavigate } from 'react-router';
+import { useNotificationContext } from '../../context/NotificationContext';
 interface SignUpFormValues {
+  first_name: string;
+  last_name: string;
+  email: string;
+  address: string;
   username: string;
   password: string;
+  confirm_password: string;
   remember: boolean;
 }
 
 export const SignUp: FC = () => {
+  const navigate = useNavigate();
+  const { alertSuccess, alertError } = useNotificationContext();
+
   const onFinish = (values: SignUpFormValues) => {
-    console.log('Success:', values);
+    HttpClient.post('/users', values)
+      .then((response) => {
+        console.log('Success:', response);
+
+        alertSuccess(`User ${response.data.user.email} created successfully`);
+        navigate('/login');
+        return response.data;
+      })
+      .catch((e) => {
+        alertError(e.response.data.message || e.message || e || 'Login failed');
+        console.log(e.message);
+      });
   };
 
   const onFinishFailed = (errorInfo: ValidateErrorEntity<SignUpFormValues>) => {
@@ -131,7 +153,7 @@ export const SignUp: FC = () => {
         </div>
         <Form.Item
           className="sign-up-form-item"
-          name="agree_to_terms"
+          name="approve_terms"
           valuePropName="checked"
           label={null}
           rules={[
