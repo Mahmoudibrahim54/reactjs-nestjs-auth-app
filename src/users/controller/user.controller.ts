@@ -8,10 +8,12 @@ import {
   Post,
   Put,
   HttpException,
+  UseGuards,
 } from '@nestjs/common';
-import { CreateUserDto } from 'src/dto/create-user.dto';
-import { UpdateUserDto } from 'src/dto/update-user.dto';
-import { UserService } from 'src/service/user/user.service';
+import { JwtAuthGuard } from 'src/common/jwt-auth.guard';
+import { CreateUserDto } from 'src/users/dtos/create-user.dto';
+import { UpdateUserDto } from 'src/users/dtos/update-user.dto';
+import { UserService } from 'src/users/service/user.service';
 
 @Controller('user')
 export class UserController {
@@ -55,6 +57,7 @@ export class UserController {
     }
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get()
   async getUsers() {
     try {
