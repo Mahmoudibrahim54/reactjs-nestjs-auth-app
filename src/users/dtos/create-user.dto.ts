@@ -1,3 +1,4 @@
+import { Transform } from 'class-transformer';
 import {
   IsString,
   MaxLength,
@@ -5,6 +6,8 @@ import {
   IsEmail,
   Matches,
   MinLength,
+  IsBoolean,
+  Equals,
 } from 'class-validator';
 export class CreateUserDto {
   @IsString()
@@ -49,4 +52,8 @@ export class CreateUserDto {
   @MaxLength(30)
   @IsNotEmpty()
   readonly confirm_password: string;
+
+  @Transform(({ value }) => value === 'true' || value === true)
+  @Equals(true, { message: 'You must accept Terms & Conditions' })
+  readonly approve_terms: boolean;
 }

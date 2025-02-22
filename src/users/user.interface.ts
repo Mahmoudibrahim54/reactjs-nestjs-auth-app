@@ -6,4 +6,5 @@ export interface IUser extends Document {
   readonly email: string;
   readonly address: string;
   readonly password: string;
+  readonly approve_terms: boolean;
 }
