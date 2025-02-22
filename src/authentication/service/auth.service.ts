@@ -4,6 +4,8 @@ import {
   Dependencies,
   UnauthorizedException,
   Logger,
+  HttpStatus,
+  HttpException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from '../../users/service/user.service';
@@ -62,5 +64,23 @@ export class AuthService {
       user,
       access_token: this.jwtService.sign(payload),
     };
+  }
+  verifyToken(token: string): boolean {
+    if (!token || typeof token !== 'string' || token.split('.').length !== 3) {
+      throw new HttpException('Invalid JWT format', HttpStatus.BAD_REQUEST);
+    }
+
+    try {
+      const decode: object = this.jwtService.verify(token, {
+        secret: process.env.JWT_SECRET,
+      });
+      if (decode) return true; // Valid token
+    } catch (error) {
+      console.log(error);
+      throw new HttpException(
+        'JWT verification failed',
+        HttpStatus.UNAUTHORIZED,
+      );
+    }
   }
 }

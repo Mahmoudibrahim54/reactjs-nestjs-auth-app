@@ -11,4 +11,11 @@ export class AuthController {
     const { email, password } = req;
     return this.authService.login(email, password);
   }
+  @Post('verify-token')
+  verifyToken(@Body() body: { token: string }) {
+    if (typeof body.token !== 'string') {
+      throw new Error('Invalid token type. Expected a string.');
+    }
+    return this.authService.verifyToken(body.token);
+  }
 }

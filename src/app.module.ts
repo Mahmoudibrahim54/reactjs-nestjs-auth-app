@@ -46,6 +46,21 @@ import { UserController } from './users/controller/user.controller';
 
             if (!user.isModified('email')) return next();
             user.set('email', user.email.toLocaleLowerCase());
+            if (!user.isModified('first_name')) return next();
+
+            user.set(
+              'first_name',
+              String(user.first_name[0]).toUpperCase() +
+                String(user.first_name).slice(1),
+            );
+            if (!user.isModified('last_name')) return next();
+
+            user.set(
+              'last_name',
+              String(user.last_name[0]).toUpperCase() +
+                String(user.last_name).slice(1),
+            );
+
             next();
           });
 
