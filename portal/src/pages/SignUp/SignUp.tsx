@@ -25,7 +25,9 @@ export const SignUp: FC = () => {
       .then((response) => {
         console.log('Success:', response);
 
-        alertSuccess(`User ${response.data.user.email} created successfully`);
+        alertSuccess(
+          `User ${response.data.newUser.username} created successfully`,
+        );
         navigate('/login');
         return response.data;
       })

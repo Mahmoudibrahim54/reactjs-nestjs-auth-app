@@ -26,7 +26,7 @@ export const Login: FC = () => {
         console.log('Response:', response);
 
         localStorage.setItem('user_info', JSON.stringify(response.data.user));
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('token', response.data.access_token);
 
         alertSuccess(`Welcome ${response.data.user.first_name}`);
         navigate('/welcome');
