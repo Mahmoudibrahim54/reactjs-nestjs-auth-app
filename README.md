@@ -29,5 +29,6 @@ npm install
 - protected routes is:
   GET, PUT, DELETE and GET/:id
   http://127.0.0.1:3000/users
+  Auth Type: Bearer Token
 
   Mahmoud Ibrahim
