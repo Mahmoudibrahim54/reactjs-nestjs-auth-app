@@ -25,7 +25,8 @@ export const UserHome: FC = () => {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState<User>(defaultUserInfo);
   useEffect(() => {
-    const loggedUser = localStorage.getItem('user_info');
+    const loggedUser =
+      localStorage.getItem('user_info') || sessionStorage.getItem('user_info');
     if (!loggedUser) {
       navigate('/');
     }
@@ -46,6 +47,9 @@ export const UserHome: FC = () => {
         onClick={() => {
           localStorage.removeItem('token');
           localStorage.removeItem('user_info');
+
+          sessionStorage.removeItem('token');
+          sessionStorage.removeItem('user_info');
           navigate('/');
         }}
       >

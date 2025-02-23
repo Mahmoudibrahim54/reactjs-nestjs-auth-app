@@ -16,22 +16,31 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('user_info');
+    const storedUser =
+      localStorage.getItem('user_info') || sessionStorage.getItem('user_info');
     const user = storedUser ? JSON.parse(storedUser) : null;
 
     if (!user) {
       localStorage.removeItem('user_info');
       localStorage.removeItem('token');
+
+      sessionStorage.removeItem('user_info');
+      sessionStorage.removeItem('token');
+
       if (location.pathname !== '/') navigate('/');
     }
 
-    const token = localStorage.getItem('token');
+    const token =
+      localStorage.getItem('token') || sessionStorage.getItem('token');
 
     console.log(location);
 
     if (!token) {
       localStorage.removeItem('user_info');
       localStorage.removeItem('token');
+
+      sessionStorage.removeItem('user_info');
+      sessionStorage.removeItem('token');
       if (location.pathname !== '/') navigate('/');
     }
 
@@ -41,6 +50,8 @@ function App() {
         notification.alertError('Token Expired');
         localStorage.removeItem('user_info');
         localStorage.removeItem('token');
+        sessionStorage.removeItem('user_info');
+        sessionStorage.removeItem('token');
 
         if (location.pathname !== '/') navigate('/');
       });

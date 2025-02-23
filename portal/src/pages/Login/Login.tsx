@@ -25,8 +25,16 @@ export const Login: FC = () => {
       .then((response) => {
         console.log('Response:', response);
 
-        localStorage.setItem('user_info', JSON.stringify(response.data.user));
-        localStorage.setItem('token', response.data.access_token);
+        if (values.remember) {
+          localStorage.setItem('user_info', JSON.stringify(response.data.user));
+          localStorage.setItem('token', response.data.access_token);
+        } else {
+          sessionStorage.setItem(
+            'user_info',
+            JSON.stringify(response.data.user),
+          );
+          sessionStorage.setItem('token', response.data.access_token);
+        }
 
         alertSuccess(`Welcome ${response.data.user.first_name}`);
         navigate('/welcome');
@@ -48,7 +56,7 @@ export const Login: FC = () => {
       <Form
         name="basic"
         initialValues={{
-          remember: true,
+          remember: false,
         }}
         className="login-form"
         onFinish={onFinish}
