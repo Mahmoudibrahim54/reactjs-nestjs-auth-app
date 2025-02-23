@@ -18,7 +18,6 @@ export const Login: FC = () => {
 
   const onFinish = (values: LoginFormValues) => {
     console.log('Success:', values);
-
     HttpClient.post('/auth/login', values, {
       validateStatus: (status) => status >= 200 && status < 300,
     })
@@ -28,12 +27,16 @@ export const Login: FC = () => {
         if (values.remember) {
           localStorage.setItem('user_info', JSON.stringify(response.data.user));
           localStorage.setItem('token', response.data.access_token);
+          sessionStorage.removeItem('user_info');
+          sessionStorage.removeItem('token');
         } else {
           sessionStorage.setItem(
             'user_info',
             JSON.stringify(response.data.user),
           );
           sessionStorage.setItem('token', response.data.access_token);
+          localStorage.removeItem('user_info');
+          localStorage.removeItem('token');
         }
 
         alertSuccess(`Welcome ${response.data.user.first_name}`);

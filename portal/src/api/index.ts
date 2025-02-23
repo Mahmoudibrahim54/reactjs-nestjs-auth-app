@@ -11,8 +11,8 @@ const HttpClient = () => {
   instance.interceptors.request.use((config) => {
     config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
     config.headers.Authorization =
-      localStorage.getItem('token') || sessionStorage.getItem('token');
-
+      'Bearer ' +
+      (localStorage.getItem('token') || sessionStorage.getItem('token'));
     return config;
   });
 
