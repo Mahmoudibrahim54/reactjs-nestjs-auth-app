@@ -42,6 +42,7 @@ export class UserController {
     }
   }
 
+  @UseGuards(JwtAuthGuard)
   @Put('/:id')
   async updateUser(
     @Param('id') userId: string,
@@ -94,6 +95,7 @@ export class UserController {
     }
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get('/:id')
   async getUser(@Param('id') userId: string) {
     try {
@@ -109,6 +111,7 @@ export class UserController {
     }
   }
 
+  @UseGuards(JwtAuthGuard)
   @Delete('/:id')
   async deleteUser(@Param('id') userId: string) {
     try {
