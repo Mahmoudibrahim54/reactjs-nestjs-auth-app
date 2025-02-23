@@ -59,10 +59,21 @@ export const SignUp: FC = () => {
               label="First Name"
               name="first_name"
               rules={[
-                {
-                  required: true,
-                  message: 'Please input your first name!',
-                },
+                () => ({
+                  validator(_, value) {
+                    if (!value) {
+                      return Promise.reject(
+                        new Error('Please input your first name!'),
+                      );
+                    }
+                    if (/^[a-zA-z ]{3,}/.test(value)) {
+                      return Promise.resolve();
+                    }
+                    return Promise.reject(
+                      new Error('First name must be at least 3 characters'),
+                    );
+                  },
+                }),
               ]}
             >
               <Input className="sign-up-form-input" />
@@ -73,10 +84,21 @@ export const SignUp: FC = () => {
               label="Last Name"
               name="last_name"
               rules={[
-                {
-                  required: true,
-                  message: 'Please input your last name!',
-                },
+                () => ({
+                  validator(_, value) {
+                    if (!value) {
+                      return Promise.reject(
+                        new Error('Please input your last name!'),
+                      );
+                    }
+                    if (/^[a-zA-z ]{3,}/.test(value)) {
+                      return Promise.resolve();
+                    }
+                    return Promise.reject(
+                      new Error('Last name must be at least 3 characters'),
+                    );
+                  },
+                }),
               ]}
             >
               <Input className="sign-up-form-input" />
@@ -87,10 +109,25 @@ export const SignUp: FC = () => {
               label="Email"
               name="email"
               rules={[
-                {
-                  required: true,
-                  message: 'Please input your Email!',
-                },
+                () => ({
+                  validator(_, value) {
+                    if (!value) {
+                      return Promise.reject(
+                        new Error('Please input your Email!'),
+                      );
+                    }
+                    if (
+                      /^[a-zA-Z]{3,}[a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
+                        value,
+                      )
+                    ) {
+                      return Promise.resolve();
+                    }
+                    return Promise.reject(
+                      new Error('Email must be a valid email'),
+                    );
+                  },
+                }),
               ]}
             >
               <Input className="sign-up-form-input" />
@@ -101,10 +138,23 @@ export const SignUp: FC = () => {
               label="Username"
               name="username"
               rules={[
-                {
-                  required: true,
-                  message: 'Please input your username!',
-                },
+                () => ({
+                  validator(_, value) {
+                    if (!value) {
+                      return Promise.reject(
+                        new Error('Please input your username!'),
+                      );
+                    }
+                    if (/^[a-zA-z0-9._%+-]{7,}/.test(value)) {
+                      return Promise.resolve();
+                    }
+                    return Promise.reject(
+                      new Error(
+                        'username must be at least 7 characters or allowed symbol (. _ % - +)',
+                      ),
+                    );
+                  },
+                }),
               ]}
             >
               <Input className="sign-up-form-input" />
@@ -115,10 +165,23 @@ export const SignUp: FC = () => {
               label="Address"
               name="address"
               rules={[
-                {
-                  required: true,
-                  message: 'Please input your Address!',
-                },
+                () => ({
+                  validator(_, value) {
+                    if (!value) {
+                      return Promise.reject(
+                        new Error('Please input your Address!'),
+                      );
+                    }
+                    if (/^[a-zA-Z!@#$%^&*(),._\- ]{8,}$/.test(value)) {
+                      return Promise.resolve();
+                    }
+                    return Promise.reject(
+                      new Error(
+                        'Address must be at least 8 characters and allowed symbol !@#$%^&*(),.-_',
+                      ),
+                    );
+                  },
+                }),
               ]}
             >
               <Input className="sign-up-form-input" />
@@ -129,10 +192,25 @@ export const SignUp: FC = () => {
               label="Password"
               name="password"
               rules={[
-                {
-                  required: true,
-                  message: 'Please input your password!',
-                },
+                () => ({
+                  validator(_, value) {
+                    if (!value) {
+                      return Promise.reject(
+                        new Error('Please input your password!'),
+                      );
+                    }
+                    if (
+                      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(value)
+                    ) {
+                      return Promise.resolve();
+                    }
+                    return Promise.reject(
+                      new Error(
+                        'Password must be 8 characters long, must contain a letter, symbol and a number',
+                      ),
+                    );
+                  },
+                }),
               ]}
             >
               <Input.Password className="sign-up-form-input" />
@@ -143,10 +221,23 @@ export const SignUp: FC = () => {
               label="Confirm Password"
               name="confirm_password"
               rules={[
-                {
-                  required: true,
-                  message: 'Please input your password again!',
-                },
+                ({ getFieldValue }) => ({
+                  validator(_, value) {
+                    if (!value) {
+                      return Promise.reject(
+                        new Error('Please input your password again!'),
+                      );
+                    }
+                    if (!value || getFieldValue('password') === value) {
+                      return Promise.resolve();
+                    }
+                    return Promise.reject(
+                      new Error(
+                        'The new password that you entered do not match!',
+                      ),
+                    );
+                  },
+                }),
               ]}
             >
               <Input.Password className="sign-up-form-input" />
