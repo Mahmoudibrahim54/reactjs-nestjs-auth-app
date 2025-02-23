@@ -26,6 +26,6 @@ npm install
 
 10- for the swagger API docs see: http://127.0.0.1:3000/api
 
-- protected route is: http://127.0.0.1:3000/users
+- protected route is: GET http://127.0.0.1:3000/users
 
    Mahmoud Ibrahim
