@@ -7,7 +7,7 @@ steps to run the project
 2- at base directory of the cloned project run:  
  npm install
 
-3- rename .env.example to .env and add all variables including database link for a mongodb database (Atlas + Compass)
+3- rename .env.example to .env and add all variables including database link for a mongodb database (Atlas)
 
 4- cd portal/ to find the frontend
 
@@ -28,4 +28,4 @@ npm install
 
 - protected route is: http://127.0.0.1:3000/users
 
-                                                                                        Mahmoud Ibrahim
+   Mahmoud Ibrahim
