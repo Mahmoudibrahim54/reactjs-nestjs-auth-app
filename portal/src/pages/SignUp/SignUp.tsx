@@ -65,8 +65,7 @@ export const SignUp: FC = () => {
                       return Promise.reject(
                         new Error('Please input your first name!'),
                       );
-                    }
-                    if (/^[a-zA-z ]{3,}/.test(value)) {
+                    } else if (/^[a-zA-z ]{3,}/.test(value)) {
                       return Promise.resolve();
                     }
                     return Promise.reject(
@@ -90,8 +89,7 @@ export const SignUp: FC = () => {
                       return Promise.reject(
                         new Error('Please input your last name!'),
                       );
-                    }
-                    if (/^[a-zA-z ]{3,}/.test(value)) {
+                    } else if (/^[a-zA-z ]{3,}/.test(value)) {
                       return Promise.resolve();
                     }
                     return Promise.reject(
@@ -115,8 +113,7 @@ export const SignUp: FC = () => {
                       return Promise.reject(
                         new Error('Please input your Email!'),
                       );
-                    }
-                    if (
+                    } else if (
                       /^[a-zA-Z]{3,}[a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
                         value,
                       )
@@ -144,8 +141,7 @@ export const SignUp: FC = () => {
                       return Promise.reject(
                         new Error('Please input your username!'),
                       );
-                    }
-                    if (/^[a-zA-z0-9._%+-]{7,}/.test(value)) {
+                    } else if (/^[a-zA-z0-9._%+-]{7,}/.test(value)) {
                       return Promise.resolve();
                     }
                     return Promise.reject(
@@ -171,8 +167,7 @@ export const SignUp: FC = () => {
                       return Promise.reject(
                         new Error('Please input your Address!'),
                       );
-                    }
-                    if (/^[a-zA-Z!@#$%^&*(),._\- ]{8,}$/.test(value)) {
+                    } else if (/^[a-zA-Z!@#$%^&*(),._\- ]{8,}$/.test(value)) {
                       return Promise.resolve();
                     }
                     return Promise.reject(
@@ -198,8 +193,7 @@ export const SignUp: FC = () => {
                       return Promise.reject(
                         new Error('Please input your password!'),
                       );
-                    }
-                    if (
+                    } else if (
                       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(value)
                     ) {
                       return Promise.resolve();
@@ -227,8 +221,7 @@ export const SignUp: FC = () => {
                       return Promise.reject(
                         new Error('Please input your password again!'),
                       );
-                    }
-                    if (!value || getFieldValue('password') === value) {
+                    } else if (!value || getFieldValue('password') === value) {
                       return Promise.resolve();
                     }
                     return Promise.reject(
@@ -267,7 +260,7 @@ export const SignUp: FC = () => {
             htmlType="submit"
             className="sign-up-form-submit-button"
           >
-            SignUp
+            Sign Up
           </Button>
         </Form.Item>
       </Form>
