@@ -14,12 +14,12 @@ steps to run the project
 5- run:
 npm install
 
-6- rename .env.example inside the portal/ folder to .env
+6- rename .env.example inside the portal/ dir to .env
 
 7- at root dir run the backend:  
  npm run start
 
-8- at /portal dir run the frontend:  
+8- at portal/ dir run the frontend:  
  npm run dev
 
 9- go to frontend url default vite is: http://localhost:5173/
@@ -29,5 +29,6 @@ npm install
 - protected routes is:
   GET, PUT, DELETE and GET/:id
   http://127.0.0.1:3000/users
+  Auth Type: Bearer Token
 
   Mahmoud Ibrahim
