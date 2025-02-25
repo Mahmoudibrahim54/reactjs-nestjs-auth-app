@@ -23,23 +23,22 @@ export const Login: FC = () => {
     })
       .then((response) => {
         console.log('Response:', response);
+        const user = response.data.user;
+        delete user.password;
 
         if (values.remember) {
-          localStorage.setItem('user_info', JSON.stringify(response.data.user));
+          localStorage.setItem('user_info', JSON.stringify(user));
           localStorage.setItem('token', response.data.access_token);
           sessionStorage.removeItem('user_info');
           sessionStorage.removeItem('token');
         } else {
-          sessionStorage.setItem(
-            'user_info',
-            JSON.stringify(response.data.user),
-          );
+          sessionStorage.setItem('user_info', JSON.stringify(user));
           sessionStorage.setItem('token', response.data.access_token);
           localStorage.removeItem('user_info');
           localStorage.removeItem('token');
         }
 
-        alertSuccess(`Welcome ${response.data.user.first_name}`);
+        alertSuccess(`Welcome ${user.first_name}`);
         navigate('/welcome');
         return response.data;
       })
