@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from '../../users/service/user.service';
-import { IUser } from 'src/users/user.interface';
+import { IUserResponse } from 'src/users/user.interface';
 @Dependencies(UserService, JwtService)
 @Injectable()
 export class AuthService {
@@ -22,10 +22,7 @@ export class AuthService {
     this.userService = userService;
     this.jwtService = jwtService;
   }
-  async validateUser(
-    email: string,
-    password: string,
-  ): Promise<Omit<IUser, 'password'> | null> {
+  async validateUser(email: string, password: string): Promise<IUserResponse> {
     const user = await this.userService.findByEmail(email);
     if (!user) {
       this.logger.log('None user with email' + email + 'tried to login');
@@ -41,19 +38,15 @@ export class AuthService {
       return null;
     }
 
-    const result = user.toObject({
-      getters: true,
-      versionKey: false,
-    }) as Omit<IUser, 'password'>;
-    this.logger.log('user with email' + email + 'logged in successfully');
+    const responseUser = this.userService.getResponseUser(user.id);
 
-    return result;
+    return responseUser;
   }
 
   async login(
     email: string,
     password: string,
-  ): Promise<{ user: Omit<IUser, 'password'>; access_token: string }> {
+  ): Promise<{ user: IUserResponse; access_token: string }> {
     const user = await this.validateUser(email, password);
     if (!user) {
       throw new UnauthorizedException('Invalid credentials');

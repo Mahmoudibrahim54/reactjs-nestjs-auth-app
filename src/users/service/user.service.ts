@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { CreateUserDto } from '../dtos/create-user.dto';
-import { IUser } from '../user.interface';
+import { IUser, IUserResponse } from '../user.interface';
 import { Model } from 'mongoose';
 import { UpdateUserDto } from '../dtos/update-user.dto';
 @Injectable()
@@ -29,7 +29,7 @@ export class UserService {
     return await this.userModel.findOne({ email }).exec();
   }
   async getAllUsers(): Promise<IUser[]> {
-    const userData = await this.userModel.find();
+    const userData = await this.userModel.find().select('-password');
     return userData;
   }
   async getUser(userId: string): Promise<IUser> {
@@ -45,5 +45,16 @@ export class UserService {
       throw new NotFoundException(`User #${userId} not found`);
     }
     return deletedUser;
+  }
+
+  async getResponseUser(userId: string): Promise<IUserResponse> {
+    const existingUser = await this.userModel
+      .findById(userId)
+      .select('-password')
+      .exec();
+    if (!existingUser) {
+      throw new NotFoundException(`User #${userId} not found`);
+    }
+    return existingUser;
   }
 }
